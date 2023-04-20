@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+  </head>
+  <body>
+    <h1>Edit User</h1>
+    <form method="post" action="{{ url_for('edit', index=user.index) }}">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="{{ user.name }}" required>
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" value="{{ user.email }}" required>
+      <br>
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" value="{{ user.age }}" required>
+      <br>
+
+      <div class="button-container: padding:20px;">
+        <input type="submit" value="Save">
+        <a href="{{ url_for('home') }}" class="cancel">Cancel</a>
+      </div>
+
+    </form>
+  </body>
+</html>
