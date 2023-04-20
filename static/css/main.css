@@ -1,0 +1,150 @@
+.main-logo {
+  display: flex;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background */
+body {
+    background-color: #ffffff;
+    font-family: Helvetica, sans-serif;
+  }
+  
+  /* Header */
+  header {
+    background-color: #1693a9;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 30px;
+    letter-spacing: -2px;
+    color: #1e454b;
+    margin-top: 0;
+  }
+
+  /* Divs */
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+  }
+
+  .center2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Table styles */
+  table {
+    border-collapse: collapse;
+    margin: 80px auto;
+    width: 80%;
+  }
+  
+  th {
+    background-color: #1693a9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  td {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 11px;
+    padding: 10px;
+  }
+
+  /* Plots */
+  .bar-plot {
+    border-collapse: collapse;
+    margin: 10px auto;
+    width: 80%;
+  }
+  
+  /* Links */
+  a {
+    font-size: 12px;
+    color: #067c91;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Buttons */
+  .button-container {
+    margin-bottom: 10px;
+  }
+  .add-user {
+    background-color: #28dab3;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+  }
+  
+  .add-user:hover {
+    background-color: #1fc09d;
+    text-decoration: none;
+  }
+
+  .file-input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.file-input:hover {
+  cursor: pointer;
+}
+
+
+/* Drag n drop */
+
+.file-input input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-input-dd {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.file-input-dd:hover {
+  cursor: pointer;
+}
+
+.file-input-dd input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
