@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+    <style>
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add User</h1>
+    <div class="form-container">
+      <form method="post" action="{{ url_for('add') }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" required>
+        <br>
+
+        <div class="button-container: padding:20px;">
+          <input type="submit" value="Add">
+          <a href="{{ url_for('home') }}" class="cancel">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+  </body>
+</html>
