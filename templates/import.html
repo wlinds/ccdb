@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Import Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+  </head>
+  <body>
+    <h1>Import Database</h1>
+
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('import_db') }}">
+        <input type="file" name="database_file" id="database_file" required>
+
+        
+      <input type="file" name="database_file" required>
+
+      <div class="button-container: padding:20px;">
+        <input type="submit" value="Import">
+        <a href="{{ url_for('home') }}" class="cancel">Cancel</a>
+      </div>
+    </form>
+
+    <h2>Test drag n drop</h2>
+    <div class="file-input-dd">
+        <script>
+            var databaseFile = document.getElementById('database_file');
+          
+            databaseFile.addEventListener('dragover', function(e) {
+              e.preventDefault();
+              this.className = 'highlight';
+            });
+          
+            databaseFile.addEventListener('dragleave', function(e) {
+              e.preventDefault();
+              this.className = '';
+            });
+          
+            databaseFile.addEventListener('drop', function(e) {
+              e.preventDefault();
+              this.className = '';
+          
+              var file = e.dataTransfer.files[0];
+              // do something with the file...
+            });
+          </script>
+        <input type="file" name="database_file" required>
+        <p>Drag and drop your file here, or click to select a file.</p>
+      </div>
+
+  </body>
+</html>
