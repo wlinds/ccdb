@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ccdb-favicon.ico') }}">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta charset="UTF-8">
+    <title>ccdb</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+    
+    <div class="center"> 
+      <div class="main-logo"><img src="static/img/ccdb-large.png" width="15%"></div>
+      <h1><span style="color:#1693a9;">Compare</span><span style="color:#28dab3;">Collect</span>DB</h1>
+
+        <div class="button-container">
+          <a href="{{ url_for('home') }}" class="default-btn">Back to home</a>
+          <a href="{{ url_for('add') }}" class="default-btn">Add user</a>
+          <a href="{{ url_for('import_page') }}" class="default-btn">Import database</a>
+        </div>
+
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.age }}</td>
+          <td>
+            <a href="{{ url_for('edit', index=user.index) }}">Edit</a>
+            <a href="{{ url_for('delete', index=user.index) }}" onclick="return confirm('Sure u want to delete {{ user.name }}? 😢')">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  <div class="center2">
+    {% if graphJSON %}
+    <div id="bar-plot">
+    <script defer>
+        var data = {{ graphJSON|safe }};
+        Plotly.newPlot('bar-plot', data.data, data.layout);
+    </script>
+    </div>
+    {% endif %}
+  </div>
+
+  </body>
+</html>
