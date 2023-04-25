@@ -22,7 +22,7 @@ body {
   h1 {
     font-size: 30px;
     letter-spacing: -2px;
-    color: #1e454b;
+    color: #828282;
     margin-top: 0;
   }
 
@@ -87,7 +87,7 @@ body {
   .button-container {
     margin-bottom: 10px;
   }
-  .add-user {
+  .default-btn {
     background-color: #28dab3;
     color: #fff;
     padding: 10px 20px;
@@ -97,7 +97,7 @@ body {
     display: inline-block;
   }
   
-  .add-user:hover {
+  .default-btn:hover {
     background-color: #1fc09d;
     text-decoration: none;
   }
