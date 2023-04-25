@@ -18,8 +18,13 @@ class User(db.Model):
     email = db.Column(db.String(50))
 
 # Default route, render user table and plot at home.html
+# !! This has been moved to @app.route('/custom_table) !!
 @app.route('/')
 def home():
+    return render_template('home.html')
+
+@app.route('/custom_table', methods=['GET'])
+def custom_table():
     users = User.query.all()
 
     # Simple plot to test embedding with JS
@@ -30,7 +35,7 @@ def home():
     fig.update_yaxes(title=None)
     graphJSON = fig.to_json()
 
-    return render_template('home.html', users=users, graphJSON=graphJSON)
+    return render_template('custom_table.html', users=users, graphJSON=graphJSON)
 
 # Allow new User object with POST, or render the add.html with GET
 @app.route('/add', methods=['GET', 'POST'])
@@ -82,6 +87,7 @@ def delete(index):
 @app.route('/import', methods=['GET'])
 def import_page():
     return render_template('import.html')
+
 
 # Allow importing existing database
 @app.route('/import', methods=['GET', 'POST'])
