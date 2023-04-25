@@ -3,7 +3,6 @@
 <html>
   <head>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='ccdb-favicon.ico') }}">
-
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <meta charset="UTF-8">
     <title>ccdb</title>
@@ -11,17 +10,15 @@
   </head>
   <body>
     
-    <div class="center">
-      
-      <div class="main-logo">
-      <img src="static/img/ccdb-large.png" width="15%">
-      </div>
-      <h1>CompareCollectDB</h1>
+    <div class="center"> 
+      <div class="main-logo"><img src="static/img/ccdb-large.png" width="15%"></div>
+      <h1><span style="color:#1693a9;">Compare</span><span style="color:#28dab3;">Collect</span>DB</h1>
 
-      <div class="button-container">
-      <a href="{{ url_for('add') }}" class="add-user">Add user</a>
-      <a href="{{ url_for('import_page') }}" class="add-user">Import database</a>
-      </div>
+        <div class="button-container">
+          <a href="{{ url_for('add') }}" class="default-btn">Add user</a>
+          <a href="{{ url_for('import_page') }}" class="default-btn">Import database</a>
+          <a href="{{ url_for('custom_table') }}" class="default-btn">Custom table</a>
+        </div>
 
     </div>
 
