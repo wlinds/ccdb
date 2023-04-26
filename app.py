@@ -2,12 +2,43 @@ from flask import Flask, render_template, request, redirect, url_for, send_file
 from flask_sqlalchemy import SQLAlchemy
 import plotly.express as px
 
+from datetime import datetime
+import psutil
+
 app = Flask(__name__) # Create instance and setting URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main_sample.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Set to True for debugging
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Set True for debug
 db = SQLAlchemy(app) # Initialize SQLAlchemy instance with Flask app
 
+def server_header():
+    # server uptime
+    uptime = datetime.now() - datetime.fromtimestamp(psutil.boot_time())
+
+    # recent queries from the request context
+    queries = getattr(request, 'query_count', None) #TODO!
+
+    return {'uptime': uptime, 'queries': queries}
+
 # -------------------------------------------------------------------------- #
+
+# TODO: Login details here
+
+# -------------------------------------------------------------------------- #
+
+# Get the server uptime and recent queries on site header
+def server_header():
+    # server uptime
+    uptime = datetime.now() - datetime.fromtimestamp(psutil.boot_time())
+
+    # recent queries from the request context
+    queries = getattr(request, 'query_count', None)
+
+    return {'uptime': uptime, 'queries': queries}
+
+# Register the function as a context processor
+@app.context_processor
+def inject_header():
+    return server_header()
 
 # Create deafult db and define columns for User
 class User(db.Model):
