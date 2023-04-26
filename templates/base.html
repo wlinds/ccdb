@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>ccdb - base</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+    {% block header %}
+
+    <div class="header">
+        <div class="header-container">
+          <h4>ccdb alpha v.0.0.1</h4>
+      
+          <p>Server uptime: {{ uptime }}</p>
+          <p>Recent queries:</p>
+          <ul>
+            {% for query in recent_queries %}
+                <li>{{ queries.text }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+      </div>
+      
+
+
+      {% endblock %}
+
+{% block content %}{% endblock %}
+</body>
+</html>
