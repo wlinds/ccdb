@@ -8,8 +8,11 @@
     <title>ccdb</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
+
   <body>
-    
+    {% extends 'base.html' %}
+    {% block content %}
+
     <div class="center"> 
       <div class="main-logo"><img src="static/img/ccdb-large.png" width="15%"></div>
       <h1><span style="color:#1693a9;">Compare</span><span style="color:#28dab3;">Collect</span>DB</h1>
@@ -57,5 +60,7 @@
     {% endif %}
   </div>
 
-  </body>
+{% endblock %} 
+
+</body>
 </html>

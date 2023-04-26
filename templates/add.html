@@ -15,6 +15,9 @@
     </style>
   </head>
   <body>
+    {% extends 'base.html' %}
+    {% block content %}
+
     <h1>Add User</h1>
     <div class="form-container">
       <form method="post" action="{{ url_for('add') }}">
@@ -35,5 +38,7 @@
 
       </form>
     </div>
+  
+  {% endblock %} 
   </body>
 </html>

@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
   </head>
-  <body>
+
+<body>
+  {% extends 'base.html' %}
+  {% block content %}
+
     <h1>Import Database</h1>
 
     <form method="post" enctype="multipart/form-data" action="{{ url_for('import_db') }}">
@@ -48,5 +52,6 @@
         <p>Drag and drop your file here, or click to select a file.</p>
       </div>
 
+  {% endblock %} 
   </body>
 </html>
