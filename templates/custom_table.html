@@ -12,22 +12,24 @@
   <body>
     {% extends 'base.html' %}
     {% block content %}
+    <br>
 
-    <div class="center"> 
-      <div class="main-logo"><img src="static/img/ccdb-large.png" width="15%"></div>
-      <h1><span style="color:#1693a9;">Compare</span><span style="color:#28dab3;">Collect</span>DB</h1>
+    <div class="button-container">
+      <a href="{{ url_for('home') }}" class="default-btn">Back to home</a>
+    </div>
 
+    <div class="center2">
         <div class="button-container">
-          <a href="{{ url_for('home') }}" class="default-btn">Back to home</a>
-          <a href="{{ url_for('add') }}" class="default-btn">Add user</a>
-          <a href="{{ url_for('import_page') }}" class="default-btn">Import database</a>
+          <th><a href="{{ url_for('add') }}" class="add-new-btn">Add new user</a></th>
+          <th><a href="{{ url_for('add') }}" class="add-new-btn">Search user</a></th>
+          <th><a href="{{ url_for('add') }}" class="add-new-btn">Sort by</a></th>
         </div>
-
     </div>
 
     <table>
       <thead>
         <tr>
+
           <th>Name</th>
           <th>Email</th>
           <th>Age</th>
