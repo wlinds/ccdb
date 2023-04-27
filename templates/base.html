@@ -14,13 +14,12 @@
           <h4>ccdb alpha v.0.0.1</h4>
       
           <p>Server uptime: {{ uptime }}</p>
-          <p>Recent queries:</p>
-          <ul>
-            {% for query in recent_queries %}
-                <li>{{ queries.text }}</li>
-            {% endfor %}
-            </ul>
+
         </div>
+        <form action="{{ url_for('search_query') }}" method="GET">
+            <input type="text" name="query" placeholder="Enter command...">
+            <button type="submit">Make query</button>
+          </form>
       </div>
       
 

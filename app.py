@@ -10,14 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main_sample.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Set True for debug
 db = SQLAlchemy(app) # Initialize SQLAlchemy instance with Flask app
 
-def server_header():
-    # server uptime
-    uptime = datetime.now() - datetime.fromtimestamp(psutil.boot_time())
-
-    # recent queries from the request context
-    queries = getattr(request, 'query_count', None) #TODO!
-
-    return {'uptime': uptime, 'queries': queries}
+# Server header below
 
 # -------------------------------------------------------------------------- #
 
@@ -27,11 +20,16 @@ def server_header():
 
 # Get the server uptime and recent queries on site header
 def server_header():
-    # server uptime
-    uptime = datetime.now() - datetime.fromtimestamp(psutil.boot_time())
+    # server uptime from instance
+    uptime = datetime.now() - start_time
+
+    # For system uptime:
+    # uptime = datetime.now() - datetime.fromtimestamp(psutil.boot_time())
 
     # recent queries from the request context
     queries = getattr(request, 'query_count', None)
+
+    recent_queries = queries
 
     return {'uptime': uptime, 'queries': queries}
 
@@ -48,11 +46,19 @@ class User(db.Model):
     name = db.Column(db.String(50))
     email = db.Column(db.String(50))
 
-# Default route, render user table and plot at home.html
-# !! This has been moved to @app.route('/custom_table) !!
+# Default route for home.html
 @app.route('/')
 def home():
     return render_template('home.html')
+
+# Search method
+@app.route('/search', methods=['GET'])
+def search_query():
+
+    # Possible SQL Injection
+    return None
+
+# Custom table is currently set to existing dbs (main_sample.db & tpme-sample.db)
 
 @app.route('/custom_table', methods=['GET'])
 def custom_table():
@@ -81,8 +87,8 @@ def add():
         db.session.add(user)
         db.session.commit()
 
-        # Redirect back to the home page
-        return redirect(url_for('home'))
+        # Redirect back to the custom table
+        return redirect(url_for('custom_table'))
 
     # Render add.html template if GET request is made
     return render_template('add.html')
@@ -102,7 +108,7 @@ def edit(index):
         db.session.commit()
 
         # Redirect back to the home page
-        return redirect(url_for('home'))
+        return redirect(url_for('custom_table'))
 
     # Render edit.html template if GET request is made
     return render_template('edit.html', user=user)
@@ -113,12 +119,11 @@ def delete(index):
     user = User.query.get_or_404(index)
     db.session.delete(user)
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('custom_table'))
 
 @app.route('/import', methods=['GET'])
 def import_page():
     return render_template('import.html')
-
 
 # Allow importing existing database
 @app.route('/import', methods=['GET', 'POST'])
@@ -154,6 +159,8 @@ def import_db():
     return render_template('import.html')
 
 if __name__ == '__main__':
+    start_time = datetime.now()
+   # uptime = datetime.datetime() - start_time
 
     # Creating all database tables if not exist
     with app.app_context():
