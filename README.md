@@ -24,7 +24,7 @@ This is a Flask web application that uses SQLAlchemy to interact with any SQLite
 --> "There are {n} people in the database."
 
 
-## **→ Sequre login system**
+## **→ Secure login system**
 
 1. **Create SA (System Administrator) Database:**\
 This database should store user credentials, such as usernames and hashed passwords, to be used for authentication.
